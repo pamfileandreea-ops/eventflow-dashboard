@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── EVENT DASHBOARD — Indigo/Violet + Slate palette ─── */
+/* Event management: professional, energetic, structured.
+   Deep indigo for focus, violet accent for actions, slate surfaces. */
+
+@layer base {
+  :root {
+    /* Surfaces — slate-warm */
+    --background: 228 20% 97%;
+    --foreground: 228 25% 12%;
+    --card: 228 18% 99%;
+    --card-foreground: 228 25% 12%;
+    --popover: 228 18% 99%;
+    --popover-foreground: 228 25% 12%;
+    /* Primary — Indigo */
+    --primary: 245 70% 52%;
+    --primary-foreground: 0 0% 100%;
+    /* Secondary */
+    --secondary: 228 15% 92%;
+    --secondary-foreground: 228 25% 20%;
+    /* Muted */
+    --muted: 228 12% 93%;
+    --muted-foreground: 228 10% 48%;
+    /* Accent — violet */
+    --accent: 262 60% 58%;
+    --accent-foreground: 0 0% 100%;
+    /* Destructive */
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    /* Border / Input */
+    --border: 228 12% 85%;
+    --input: 228 12% 85%;
+    --ring: 245 70% 52%;
+    --radius: 0.5rem;
+    /* Sidebar */
+    --sidebar-background: 228 30% 14%;
+    --sidebar-foreground: 228 15% 80%;
+    --sidebar-primary: 245 70% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 228 25% 22%;
+    --sidebar-accent-foreground: 228 10% 90%;
+    --sidebar-border: 228 20% 20%;
+    --sidebar-ring: 245 70% 65%;
+    /* Chart colors */
+    --chart-1: 245 70% 52%;
+    --chart-2: 262 60% 58%;
+    --chart-3: 186 60% 42%;
+    --chart-4: 25 80% 52%;
+    --chart-5: 142 60% 42%;
+  }
+
+  .dark {
+    --background: 228 25% 9%;
+    --foreground: 228 12% 85%;
+    --card: 228 25% 11%;
+    --card-foreground: 228 12% 85%;
+    --popover: 228 25% 11%;
+    --popover-foreground: 228 12% 85%;
+    --primary: 245 70% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 228 20% 18%;
+    --secondary-foreground: 228 12% 82%;
+    --muted: 228 18% 16%;
+    --muted-foreground: 228 8% 50%;
+    --accent: 262 55% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 228 15% 22%;
+    --input: 228 15% 22%;
+    --ring: 245 70% 65%;
+    --sidebar-background: 228 30% 7%;
+    --sidebar-foreground: 228 12% 75%;
+    --sidebar-primary: 245 70% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 228 22% 14%;
+    --sidebar-accent-foreground: 228 10% 88%;
+    --sidebar-border: 228 20% 14%;
+    --sidebar-ring: 245 70% 65%;
+    --chart-1: 245 65% 65%;
+    --chart-2: 262 55% 65%;
+    --chart-3: 186 55% 55%;
+    --chart-4: 25 75% 60%;
+    --chart-5: 142 55% 52%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground font-sans antialiased; }
+  .tabular-nums { font-variant-numeric: tabular-nums lining-nums; }
+}
+
+/* ─── Custom dashboard components ─── */
+.stat-card {
+  @apply rounded-xl border bg-card p-5 flex flex-col gap-2 shadow-sm hover:shadow-md transition-shadow;
+}
+
+.kanban-col {
+  @apply rounded-xl border bg-card p-3 flex flex-col gap-2 min-h-[200px];
+}
+
+.kanban-card {
+  @apply rounded-lg border bg-background p-3 cursor-grab active:cursor-grabbing shadow-sm hover:shadow transition-all;
+}
+
+.kanban-card:hover { @apply -translate-y-0.5; }
+
+.status-pill {
+  @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.channel-bar {
+  @apply h-2 rounded-full transition-all duration-700;
+}
+
+/* Subtle gradient header for sidebar */
+.sidebar-gradient {
+  background: linear-gradient(160deg, hsl(245 70% 28%) 0%, hsl(228 30% 14%) 60%);
+}
+
+/* Sprint badge */
+.sprint-badge {
+  @apply text-xs font-semibold px-2 py-0.5 rounded bg-primary/10 text-primary;
+}
+
+/* Priority dot */
+.priority-critical { @apply text-red-500; }
+.priority-high { @apply text-orange-500; }
+.priority-medium { @apply text-yellow-500; }
+.priority-low { @apply text-green-500; }
+
+/* Platform badge */
+.platform-eventbrite { @apply bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400; }
+.platform-cvent      { @apply bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400; }
+.platform-bizzabo    { @apply bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400; }
+.platform-manual     { @apply bg-slate-100 text-slate-600 dark:bg-slate-700/40 dark:text-slate-300; }
+
+/* Event status */
+.event-draft       { @apply bg-slate-100 text-slate-600 dark:bg-slate-700/40 dark:text-slate-300; }
+.event-published   { @apply bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400; }
+.event-completed   { @apply bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400; }
+.event-cancelled   { @apply bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400; }
+
+/* Reg status */
+.reg-confirmed  { @apply bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400; }
+.reg-pending    { @apply bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400; }
+.reg-cancelled  { @apply bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400; }
+.reg-attended   { @apply bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400; }
